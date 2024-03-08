@@ -1,26 +1,25 @@
 import { useState } from "react";
 
 export default function Converter() {
-  const [cupSize, setCupSize] = useState<number>(6);
   const [coffeeAmount, setCoffeeAmount] = useState<number>(0);
   const [waterAmount, setWaterAmount] = useState<number>(0);
 
   const onSelectChange = (e: any) => {
-    e.preventDefault();
-    setCupSize(e.target.value);
-    setWaterAmount(Math.round(cupSize * 28.34952));
-    setCoffeeAmount(Math.round(waterAmount / 16));
+    const waterToGrams = e.target.value * 28.34952;
+    const waterForBrew = waterToGrams + waterToGrams * 0.25;
+    setWaterAmount(Math.round(waterForBrew));
+    setCoffeeAmount(Math.round(waterForBrew / 16));
   };
 
   return (
     <div>
-      <form className="flex flex-auto flex-row">
+      <form className="flex flex-row">
         <div>
           <label>
             <input
               type="radio"
               name="cup-size"
-              value="6"
+              value={6}
               onClick={onSelectChange}
             />
             6 oz
@@ -32,7 +31,7 @@ export default function Converter() {
             <input
               type="radio"
               name="cup-size"
-              value="8"
+              value={8}
               onClick={onSelectChange}
             />
             8 0z
@@ -44,7 +43,7 @@ export default function Converter() {
             <input
               type="radio"
               name="cup-size"
-              value="10"
+              value={10}
               onClick={onSelectChange}
             />
             10 oz
@@ -56,7 +55,7 @@ export default function Converter() {
             <input
               type="radio"
               name="cup-size"
-              value="12"
+              value={12}
               onClick={onSelectChange}
             />
             12 oz
