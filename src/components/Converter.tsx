@@ -12,61 +12,80 @@ export default function Converter() {
   };
 
   return (
-    <div>
-      <form className="flex flex-row">
-        <div>
-          <label>
+    <>
+      <div>
+        <h3 className="mb-5 text-lg font-medium text-gray-900 dark:text-white">
+          How much coffee do you want to brew?
+        </h3>
+        <ul className="flex flex-auto justify-center md:grid-cols-4">
+          <li>
             <input
+              className="hidden peer"
+              id="small-coffee"
+              name="coffee-size"
               type="radio"
-              name="cup-size"
-              value={6}
+              value="6"
+              required
               onClick={onSelectChange}
             />
-            6 oz
-          </label>
-        </div>
-
-        <div>
-          <label>
+            <label htmlFor="small-coffee" className="cup-size-icon">
+              <div className="block">
+                <div className="text-lg font-semibold">6 oz</div>
+              </div>
+            </label>
+          </li>
+          <li>
             <input
               type="radio"
-              name="cup-size"
-              value={8}
+              id="medium-coffee"
+              name="coffee-size"
+              value="8"
+              className="hidden peer"
               onClick={onSelectChange}
             />
-            8 0z
-          </label>
-        </div>
-
-        <div>
-          <label>
+            <label htmlFor="medium-coffee" className="cup-size-icon">
+              <div className="block">
+                <div className="w-full text-lg font-semibold">8 oz</div>
+              </div>
+            </label>
+          </li>
+          <li>
             <input
               type="radio"
-              name="cup-size"
-              value={10}
+              id="large-coffee"
+              name="coffee-size"
+              value="10"
+              className="hidden peer"
               onClick={onSelectChange}
             />
-            10 oz
-          </label>
-        </div>
-
-        <div>
-          <label>
+            <label htmlFor="large-coffee" className="cup-size-icon">
+              <div className="block">
+                <div className="w-full text-lg font-semibold">10 oz</div>
+              </div>
+            </label>
+          </li>
+          <li>
             <input
               type="radio"
-              name="cup-size"
-              value={12}
+              id="extra-large-coffee"
+              name="coffee-size"
+              value="12"
+              className="hidden peer"
               onClick={onSelectChange}
             />
-            12 oz
-          </label>
-        </div>
-      </form>
+            <label htmlFor="extra-large-coffee" className="cup-size-icon">
+              <div className="block">
+                <div className="w-full text-lg font-semibold">12 oz</div>
+              </div>
+            </label>
+          </li>
+        </ul>
+      </div>
 
       <div>
         <p>Water: ≈{waterAmount == 0 ? "" : waterAmount} grams</p>
         <p>Coffee: ≈{coffeeAmount == 0 ? "" : coffeeAmount} grams</p>
       </div>
-    </div>
+    </>
   );
 }
